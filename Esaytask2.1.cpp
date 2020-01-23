@@ -112,7 +112,7 @@ int main()
 	else {
 		cout << "Invalid number" << endl;
 	}
-	
+	return 0;
 }
 
 
