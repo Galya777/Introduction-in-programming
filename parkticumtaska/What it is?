@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    char symbol;
+    cin >> symbol;
+    if (symbol >= 'A' && symbol <= 'Z') {
+        cout << symbol << " is a letter"<<endl;
+        char lower= symbol + 'a' - 'A';
+        cout << lower;
+       
+    } else if (symbol >= 'a' && symbol <= 'z') {
+        cout << symbol << " is a letter" << endl;
+        char upper = symbol + 'A' - 'a';
+        cout << upper;
+
+    } else if (symbol >= 'z') {
+        cout << symbol << " is not touched!";
+    }
+    else {
+        cout << symbol << " is a number" << endl;
+        int a = symbol - '0';
+        int square = a * a;
+        cout << square;
+    }
+    return 0;
+}
