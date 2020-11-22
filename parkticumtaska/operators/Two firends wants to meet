@@ -1,0 +1,70 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main()
+{
+        short start1, end1, start2, end2;
+        short time;
+        char tens, ones;
+
+        // Въвеждане на данните.
+
+        cin >> tens >> ones;
+        time = (tens - '0') * 10 + ones - '0';    // Съставяме си часа.
+
+        start1 = time * 60;                   // Преобразуваме времето в минути.
+        cin >> ones;                        // Прочитаме ":".
+
+        cin >> tens >> ones;
+        time = (tens - '0') * 10 + ones - '0';    // Съставяме си минутите.
+
+        start1 += time;                     // Началният час на първия.
+
+        cin >> tens >> ones;
+        time = (tens - '0') * 10 + ones - '0';    // Съставяме си часа.
+
+        end1 = time * 60;                     // Преобразуваме времето в минути.
+        cin >> ones;                        // Прочитаме ":".
+
+        cin >> tens >> ones;
+        time = (tens - '0') * 10 + ones - '0';
+
+        end1 += time;                       // Крайният час на първия.
+
+
+        cin >> tens >> ones;
+        time = (tens - '0') * 10 + ones - '0';    // Съставяме си часа.
+
+        start2 = time * 60;                   // Преобразуваме времето в минути.
+        cin >> ones;                        // Прочитаме ":".
+
+        cin >> tens >> ones;
+        time = (tens - '0') * 10 + ones - '0';
+
+        start2 += time;                     // Началният час на втория.
+
+        cin >> tens >> ones;
+        time = (tens - '0') * 10 + ones - '0';    // Съставяме си часа.
+
+        end2 = time * 60;                     // Преобразуваме времето в минути.
+        cin >> ones;                        // Прочитаме ":".
+
+        cin >> tens >> ones;
+        time = (tens - '0') * 10 + ones - '0';
+
+        end2 += time;                       // Крайният час на втория.
+	short earliestStart = start1 < start2 ? start2 : start1;    
+	short latestEnd = end1 < end2 ? end1 : end2;
+	if (latestEnd - earliestStart < 30)
+	{
+		cout << "No meeting";
+	}
+	else
+	{
+		int hours, minutes;
+		hours = earliestStart / 60;
+		minutes = earliestStart % 60;
+		cout << hours << ':' << minutes;
+	}
+ return 0;
+}
