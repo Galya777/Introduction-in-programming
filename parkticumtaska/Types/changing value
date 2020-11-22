@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+int a, b;
+	cin >> a >> b;
+//with third variable
+	int c = a;
+	a = b;
+	b = c;
+	//without third variable
+  int sum=a+b;
+  a=sum-a;
+  b=sum-b;
+  	cout << a<<" "<< b;
+   return 0;
+}
