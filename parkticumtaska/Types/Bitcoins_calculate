@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	float number;
+	float procentage;
+	cin >> number >> procentage;
+	float newnum = (procentage / 100) * number;
+	float sum = number + newnum;
+	cout << "You have " << sum << " bitcoins!" << endl;
+	cout << "The change in your balance is " << newnum<<".";
+	return 0;
+}
