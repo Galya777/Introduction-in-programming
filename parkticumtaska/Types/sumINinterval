@@ -1,0 +1,13 @@
+#include <iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	int n,m;
+	cin >> n >> m;
+	int sum = (n+1)*n/2;
+	cout << sum<<endl;
+	int sum2 = (m +n) * (m/2-n/2);
+	cout << sum2;
+	return 0;
+}
