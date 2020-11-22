@@ -1,0 +1,29 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+int inverse(int number) {
+	int digs = sizeof(number)-1;
+	int digit=0;
+	while (number > 0) {
+		while (digs>0) {
+			digit += (number % 10) * pow(10, digs-1);
+			digs--;
+			number = number / 10;
+		}
+	}
+	return digit;
+}
+int main()
+{
+	int number;
+	cin >> number;
+	if (number == inverse(number)) {
+		cout << "YES!";
+	}else {
+		cout << "NO!";
+	}
+	
+   return 0;
+}
+
+ 
