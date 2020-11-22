@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int years;
+	cin >> years;
+	int weeks = years * 52;
+	int days = years * 365;
+	int hours = days * 24;
+	int minutes = hours * 60;
+	int seconds = minutes * 60;
+	cout << weeks << endl;
+	cout << days << endl;
+	cout << hours << endl;
+	cout << minutes << endl;
+	cout << seconds << endl;
+
+	return 0;
+}
