@@ -1,0 +1,16 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main()
+{
+	int N;
+	cin >> N;
+	if (N < 0) {
+		cout << "WRONG INPUT!";
+	}else {
+		unsigned int power = log2(N) + 1;
+		cout << "Closest power of 2 larger than " << N	<< " is\n2 to the power of " << power<< " = " << pow(2, power) << endl;
+	}
+
+	return 0;
+}
