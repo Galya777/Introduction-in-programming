@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+int max(int a, int b) {
+	if (a > b) {
+		return a;
+	}
+	return b;
+}
+int min(int a, int b) {
+	if (a > b) {
+		return b;
+	}
+	return a;
+}
+int main()
+{
+	int a,b,c;
+	cin >> a >> b;
+	cin >> c;
+	while (c<min(a,b)||c>max(a,b)) {
+		cout << "Wrong input! Try again!"<<endl;
+		cin >> c;
+	}
+	cout << "Great job!";
+   return 0;
+}
