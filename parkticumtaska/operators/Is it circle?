@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	double r, x, y; Check if a point is in the circle
+		cin >> r >> x >> y;
+	if ((x - y) <= r) {
+		cout << "Yes";
+	}
+	else {
+		cout << "No";
+	return 0;
+}
