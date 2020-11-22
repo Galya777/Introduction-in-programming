@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int number;
+	int min,max,aver;
+	int sum;
+	int count = 1;
+		cin >> number;
+		min = number;
+		max = number;
+		sum = number;
+		while (number > 0) {
+			if (number < min) {
+				min = number;
+			}
+			if (number > max) {
+				max = number;
+			}
+			sum += number;
+			cin >> number;
+			count++;
+		}
+		aver = sum / count;
+	cout << min << " " << max << " " << aver;
+   return 0;
+}
