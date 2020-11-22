@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int wins, looses, equals;  
+        cin >> wins >> equals >> looses;
+    int score = 0;
+    if (wins) {
+        score += 3 * wins;
+    } if (equals) {
+        score += 1 * equals;
+    }
+    else {
+        score += 0 * looses;
+    }
+    cout << score; 
+	return 0;
+}
