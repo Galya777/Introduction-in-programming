@@ -4,12 +4,14 @@ using namespace std;
 int main()
 {
 	int number;
+	int counter=0;
 	cin >> number;
 	for (int i = 1; i <= number;i++) {
 		if (number % i == 0) {
 			cout << i << " ";
+			counter++;
 		}
 	}
-
+cout<<"Number of divisors: "<<counter;
  return 0;
 }
