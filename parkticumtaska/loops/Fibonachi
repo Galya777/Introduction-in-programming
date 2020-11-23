@@ -1,0 +1,23 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main()
+{
+	int count;
+	cin >> count;
+	int first = 0;
+	int second = 1;
+	if (count == 0) {
+		cout << first;
+	}else if (count == 1) {
+		cout << first << " " << second << " ";
+	}else if (count >= 2) {
+		cout << first << " " << second << " ";
+	for (int i = 0; i < count; i++) {
+		second = first + second;
+		first = second - first;
+		cout << second << " ";
+	}
+	}
+ return 0;
+}
