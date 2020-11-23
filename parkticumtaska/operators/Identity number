@@ -1,0 +1,29 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+const int DIGUT = 10;
+int main()
+{
+    int identityNumber;
+    cin >> identityNumber;
+    int d = pow(DIGUT, 10);
+    int d1 = pow(DIGUT, 9);
+    int d2 = pow(DIGUT, 8);
+    int d3 = pow(DIGUT, 7);
+    int d4 = pow(DIGUT, 6);
+    int d5 = pow(DIGUT, 5);
+    int days = (identityNumber % d4)*10+identityNumber%d5;
+    int mounth = (identityNumber % d2) * 10 + identityNumber % d3;
+    int year = (identityNumber % d) * 10 + identityNumber % d1;
+
+    if (mounth > 12) {
+        cout << "INVALID!";
+    } else {
+        if (days > 31) {
+            cout << "INVALID!";
+        }   else {
+            cout << days << " " << mounth << " " << year;
+        }
+    }
+ return 0;
+}
