@@ -1,0 +1,15 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main()
+{
+	int N;
+	cin >> N; 
+	int factoriel = 1;
+	while (N > 0) {
+		factoriel *= N;
+		N--;
+	}
+	cout << factoriel;
+ return 0;
+}
