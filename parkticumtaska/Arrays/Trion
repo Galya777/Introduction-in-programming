@@ -1,0 +1,24 @@
+#include <iostream>
+const int MAX = 128;
+using namespace std;
+int main()
+{
+	int arr[MAX];
+	int number,n;
+	cin >> number;
+	for (int i = 0; i < number; i++) {
+		cin >> n;
+		arr[i] = n;
+	} bool trion = false;
+	for (int i = 1; i <= number-1; i++) {
+		if (arr[i-1]==1+arr[i]&&arr[i]==arr[i+1]+1|| arr[i - 1] == arr[i]-1 && arr[i] == arr[i + 1] -1) {
+			trion = true;
+		}
+	}
+	if (trion) {
+		cout << "YES!";
+	}else {
+		cout << "NO!";
+	}
+	return 0;
+}
