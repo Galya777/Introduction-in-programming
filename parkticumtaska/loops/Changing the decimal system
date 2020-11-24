@@ -1,0 +1,18 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main()
+{
+	int number;
+	int decimalSystem;
+	int counter =0;
+	cin >> number>>decimalSystem;
+      for(int i=1;i<=number;i+=pow(decimalSystem,counter)){
+		int digit = i% decimalSystem;
+		cout << digit;
+		counter++;
+		}
+	
+	
+ return 0;
+}
