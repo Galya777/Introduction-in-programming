@@ -1,0 +1,22 @@
+#include <iostream>
+const int MAX = 128;
+using namespace std;
+int main()
+{
+	int arr[MAX];
+	int number,n;
+	cin >> number;
+	for (int i = 0; i < number; i++) {
+		cin >> n;
+		arr[i] = n;
+	} 
+	int average = 1;
+	int product = 1;
+	for (int i = 0; i < number; ++i) {
+		
+		product*= arr[i];
+	}
+	average = product / number;
+	cout << average;
+	return 0;
+}
