@@ -1,0 +1,28 @@
+#include <iostream>
+const int MAX = 100;
+using namespace std;
+int main()
+{
+	int number;
+	int array[MAX];
+	cin >> number;
+	int n;
+	int counter = 0;
+	while(number % 2 != 1) {
+		cout << "Wrong input!"<<endl;
+		cin >> number;
+	}
+	for (int i = 0; i < number; i++) {
+		cin >> n;
+		array[i] = n;
+	} int unique =0;
+	for (int j = 0; j < number-1;j++ ) {
+		for (int g = number; g > j; g--) {
+			if (array[g] != array[j]) {
+				unique = array[j-1];
+			}
+		}
+    }
+	cout << unique;
+	return 0;
+}
