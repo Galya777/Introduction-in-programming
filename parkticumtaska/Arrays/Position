@@ -1,0 +1,24 @@
+#include <iostream>
+const int MAX = 128;
+using namespace std;
+int main()
+{
+	int arr[MAX];
+	int number,n;
+	cin >> number;
+	for (int i = 0; i < number; i++) {
+		cin >> n;
+		arr[i] = n;
+	} 
+	cout << "Enter the number you are searching: ";
+	int numberSearch;
+	cin >> numberSearch;
+	int position = -1;
+	for (int i = 0; i < number; i++) {
+		if (numberSearch == arr[i]) {
+			position=i;
+		}
+	}
+	cout << position;
+	return 0;
+}
