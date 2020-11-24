@@ -5,14 +5,19 @@ int main()
 {
 	int number;
 	int decimalSystem;
-	int counter =0;
-	cin >> number>>decimalSystem;
-      for(int i=1;i<=number;i+=pow(decimalSystem,counter)){
-		int digit = i% decimalSystem;
-		cout << digit;
-		counter++;
-		}
+	cin >> number>> decimalSystem;
+	int i, j, binaryn = 0, decimaln = number;
+	i = 1;
+	j = number;
+	do
+	{
+		binaryn = binaryn + (number % 2) * i;
+		i = i * 10;
+		number = number / decimalSystem;
+		j = j / decimalSystem;
+	} while (j > 0);
+	cout << binaryn;
 	
-	
- return 0;
+
+	return 0;
 }
