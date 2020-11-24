@@ -21,7 +21,8 @@ int main()
             ++j;
         }
         if (occurances == 2)
-            std::cout << arr[i] << " ";
+	std::cout<<i<<" ";
+            std::cout << arr[i] << " "<<endl;
     }
 	return 0;
 }
