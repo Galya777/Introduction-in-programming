@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+bool isItprime(int n) {
+	for (int i = 1; i < n; i++) {
+		if ((n % i == 0) && (i != 1)) {
+			return false;
+		}
+	}
+	return true;
+}
+int main()
+{
+	int number;
+	cin >> number;
+	int first = 0;
+	int second = 0;
+	bool yep = true;
+	for (int i = 0; i < number; i++) {
+		int j = 1;
+		while(j<i){
+			if ((j + i == number) && isItprime(i) && isItprime(j)) {
+				first = i;
+				second = j;
+			}
+			j++;
+		}
+	} if (yep) {
+		cout << first << " + " << second << " = " << number << endl;
+	}
+	else {
+		cout << "There is not such prime numbers." << endl;
+	
+	}
+	
+	return 0;
+}
