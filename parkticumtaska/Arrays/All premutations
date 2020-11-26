@@ -1,0 +1,22 @@
+#include <iostream>
+const int MAX = 128;
+using namespace std;
+int main()
+{
+	int arr[MAX];
+	int number,n;
+	cin >> number;
+	for (int i = 0; i < number; i++) {
+		cin >> n;
+		arr[i] = n;
+	} int permutation = 0;
+	for (int i = 0; i < number; i++) {
+		int j = 0;
+		while (j < i) {
+			permutation = arr[i] * 10 + arr[j];
+			cout << permutation << " ";
+			++j;
+		}
+	}
+	return 0;
+}
