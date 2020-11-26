@@ -1,0 +1,29 @@
+#include <iostream>
+const int MAX = 128;
+using namespace std;
+int main()
+{
+	int arr[MAX][MAX];
+	int number,n;
+	cin >> number;
+	for (int i = 0; i < number; i++) {
+		for (int j = 0; j < number; j++) {
+			cin >> n;
+			arr[i][j] = n;
+		}
+	} int upmainsum = 0;
+	int downmainsum = 0;
+	for (int i = 0; i < number; i++) {
+		for (int j = 0; j < number; j++) {
+			if (i<j) {
+				upmainsum += arr[i][j];
+			}
+			else if (i > j) {
+				downmainsum += arr[i][j];
+			}
+		}
+	} 
+	cout <<"Over the main diagonal the sum is: "<< upmainsum << endl;
+	cout << "Uner the main diagonal the sum is: " << downmainsum << endl;
+	return 0;
+}
