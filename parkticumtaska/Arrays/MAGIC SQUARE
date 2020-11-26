@@ -1,0 +1,49 @@
+#include <iostream>
+const int MAX = 128;
+using namespace std;
+bool isMagicSQUARE(int arr[][MAX], int rows,int colls) {
+	if (rows != colls) {
+		return false;
+	}
+	int mainsum = 0;
+	int submainsum = 0;
+	for (int i = 0; i < rows; i++) {
+		mainsum += arr[i][i];
+		submainsum += arr[i][colls - 1 - i];
+	}
+	if (mainsum != submainsum) {
+		return false;
+	}
+	int rowsum = 0;
+	int colsum = 0;
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < colls; j++) {
+			rowsum += arr[i][j];
+			colsum += arr[j][i];
+			if (rowsum !=mainsum||mainsum!=colsum) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+int main()
+{
+	int arr[MAX][MAX];
+	int number,n;
+	cin >> number;
+	for (int i = 0; i < number; i++) {
+		for (int j = 0; j < number; j++) {
+			cin >> n;
+			arr[i][j] = n;
+		}
+	} 
+	if (isMagicSQUARE(arr,number,number) == true) {
+		cout << "It is a magic square!" << endl;
+	}else {
+		cout << "Not a magic square!" << endl;
+	}
+
+	
+	return 0;
+}
