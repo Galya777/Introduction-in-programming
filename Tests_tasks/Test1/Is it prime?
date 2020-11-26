@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+bool isItprime(int n) {
+	for (int i = 1; i < n; i++) {
+		if ((n % i == 0)&&(i!=1)) {
+			return false;
+}
+	}
+	return true;
+}
+int main()
+{
+	int n;
+	cin >> n;
+	while (n > 0) {
+		if (isItprime(n) == true) {
+			cout << n << " is prime." << endl;
+		}else {
+			cout << n << " is not prime." << endl;
+		}
+		n /= 10;
+	}
+	
+	return 0;
+}
