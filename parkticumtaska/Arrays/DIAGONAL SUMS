@@ -1,0 +1,33 @@
+#include <iostream>
+const int MAX = 128;
+using namespace std;
+int main()
+{
+	int arr[MAX][MAX];
+	int number,n;
+	cin >> number;
+	for (int i = 0; i < number; i++) {
+		for (int j = 0; j < number; j++) {
+			cin >> n;
+			arr[i][j] = n;
+		}
+	} int mainsum = 0;
+	int submain = 0;
+	for (int i = 0; i < number; i++) {
+		for (int j = 0; j < number; j++) {
+			if (i == j) {
+				mainsum += arr[i][j];
+			}
+		}
+	} cout << endl;
+	for (int i = 0; i < number; i++) {
+	for (int j = 0; j < number; j++) {
+			if (i + j == number-1) {
+				submain+= arr[i][j];
+			}
+		}
+	}
+	cout << mainsum << endl;
+	cout << submain << endl;
+	return 0;
+}
