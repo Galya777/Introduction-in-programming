@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+const int MAX = 100;
+int main()
+{
+	int N;
+	double n;
+	double row[MAX];
+	double EPS = 0.0001;
+	cin >> N;
+	for (int i = 0; i < N; i++) {
+		cin >> n;
+		row[i] = n;
+	}
+	double sum = 0;
+	for (int i = 0; i < N; i++) {
+		sum += row[i];
+	}
+	double average = sum / N;
+	unsigned int resultsize = 0;
+	double rowres[MAX];
+	bool inSequence = false;
+	for (int i = 0; i < N-1; i++) {
+		if (!inSequence) {
+			if (abs(row[i] - row[i + 1]) <= EPS) {
+				rowres[resultsize++] = average;
+				inSequence = true;
+			}
+			else {
+				rowres[resultsize++] = row[i];
+			}
+		}	else {
+			if (!(abs(row[i] - row[i + 1]) < EPS))
+				inSequence = false;
+		}
+	} if (!inSequence) {
+		rowres[resultsize++] = row[N - 1];
+	}
+	for (int i = 0; i < resultsize; i++) {
+		cout << rowres[i] << " ";
+	}
+	return 0;
+}
