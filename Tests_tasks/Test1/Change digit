@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+int mpower(int a, int b) {
+	int power = 1;
+	for (int i = 0; i < b; i++) {
+		power *= a;
+	}
+	return power;
+}
+int main()
+{
+	int N, K, P;
+	cin >> N >> K >> P;
+	while (P < 0 || P>10) {
+		cout << "Wrong input!";
+		cin >> P;
+	}
+	int digit = (N/mpower(10,K+1))%10;
+	N = N - digit * mpower(10, K + 1);
+	N = N + P * mpower(10, K + 1);
+	cout << N;
+	return 0;
+}
