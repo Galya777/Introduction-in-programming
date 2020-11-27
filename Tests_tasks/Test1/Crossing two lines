@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+double mAbs(double num)
+{
+	return num < 0 ? -num : num;
+}
+int main()
+{
+	const double EPS = 0.0001;
+	double a1, b1, c1;
+	double a2, b2, c2;
+	cin >> a1 >> b1 >> c1 >> a2 >> b2 >> c2;
+	double determinant = a1 * b2 - b1 * a2;
+	double intersectionX = ((c1 * b2) - (c2 * b1)) / determinant;
+	double intersectionY = ((a1 * c2) - (c1 * a2)) / determinant;
+	if (mAbs(determinant) < EPS)
+		std::cout << "Parallel" << std::endl;
+	else
+		std::cout << "The lines intersect at (" << intersectionX << ", " << intersectionY << ")" << std::endl;
+
+	return 0;
+}
