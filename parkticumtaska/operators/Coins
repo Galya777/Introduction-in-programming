@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int countCoins = 0;
+int coins(int money) {
+    if (money == 0) {
+        return countCoins;
+    } else if (money >= 5) {
+        money -= 5;
+        countCoins++;
+        return coins(money);
+    } else if (money >= 2) {
+        money -= 2;
+        countCoins++;
+        return coins(money);
+    }else {
+        money--;
+        countCoins++;
+        return coins(money);
+    }
+}
+int main()
+{
+    int money;
+    cin >> money;
+    cout << coins(money);
+    return 0;
+}
