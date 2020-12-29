@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    unsigned number1, number2;
+    cin >> number1 >> number2;
+        bool firstbit1 = number1/1000;
+        bool firstbit2 = number2/1000;
+        bool secondbit1 = (number1/100)%10;
+        bool secondbit2 = (number2/100)%10;
+        bool thirdbit1 = (number1/10)%10;
+        bool thirdbit2 = (number2/10)%10;
+        bool fourthbit1 = number1%10;
+        bool fourthbit2 = number2%10;
+        bool carry = 0;
+        bool sym1=((firstbit1^firstbit2)^carry);
+        bool carry1 = ((firstbit1 & firstbit2) | (firstbit1 & carry)) | (firstbit2 & carry);
+        bool sym2 = ((secondbit1 ^ secondbit2)^carry1);
+        bool carry2 = ((secondbit1 & secondbit2) | (secondbit1 & carry1)) | (secondbit2 & carry1);
+        bool sym3 = ((thirdbit1 ^ thirdbit2)^carry2);
+        bool carry3 = ((thirdbit1 & thirdbit2) | (thirdbit1 & carry2)) | (thirdbit2 & carry2);
+        bool sym4 = ((fourthbit1 ^ fourthbit2)^carry3);
+        bool carry4 =((fourthbit1 & fourthbit2) | (fourthbit1 & carry3)) | (fourthbit2 & carry3);
+        cout<<carry4<<sym1<<sym2<<sym3<<sym4;
+             
+      
+    return 0;
+}
