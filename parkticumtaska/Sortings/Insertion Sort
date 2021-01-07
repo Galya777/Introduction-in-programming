@@ -61,7 +61,7 @@ void insertSorted(int array[], int x, unsigned size)
 	}
 	array[i] = x;
 }
-int insertionSort(int arr[],unsigned size) {
+void insertionSort(int arr[],unsigned size) {
 	for (unsigned i = 1; i < size; ++i) {
 		insertSorted(arr, arr[i], i);
 	}
