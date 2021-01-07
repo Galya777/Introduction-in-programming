@@ -37,6 +37,14 @@ bool insert(int arr[], unsigned position, int x, unsigned n) {
 		
 	}
 }
+int removeElement(int arr[], size_t size) {
+	for (int i = 0; i < size; ++i) {
+		if (arr[i] < 0) {
+			arr[i] = arr[size - 1];
+			size--;
+		}
+	}
+}
 int main()
 {
 	
