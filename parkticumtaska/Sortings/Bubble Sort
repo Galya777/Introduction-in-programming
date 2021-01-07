@@ -1,0 +1,84 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+const int MAX_SIZE =1000;
+void swap(int arr[], unsigned i, unsigned j)
+{
+	if (i != j) {
+		int t = arr[i];
+		arr[i] = arr[j];
+		arr[j] = t;
+	}
+}unsigned minFrom(int array[], unsigned from, unsigned to)
+{
+	unsigned min = from;
+	for (unsigned i = from + 1; i < to; ++i) {
+		if (array[i] < array[min])
+			min = i;
+	}
+	return min;
+}unsigned readSize()
+	{
+		unsigned n;
+		do {
+			cout << "N = ";
+			cin >> n;
+		} while (n == 0 || n > MAX_SIZE);
+		return n;
+	}
+void readArray(int array[], unsigned size)
+	{
+		for (unsigned i = 0; i < size; ++i) {
+			cin >> array[i];
+		}
+	}
+void generateArray(int array[], unsigned size, int max)
+{
+	static bool inited;
+	if (!inited) {
+		inited = true;
+		srand(time(0));
+	}
+
+	for (unsigned i = 0; i < size; ++i) {
+		array[i] = rand() % max * (rand() % 2 ? 1 : -1);
+	}
+}
+
+void printArray(int array[], unsigned size)
+{
+	for (unsigned i = 0; i < size; ++i) {
+		cout << array[i] << " ";
+	}
+	cout << endl;
+}
+void bubbleSort(int array[], unsigned size)
+{
+	bool changed = false;       // If an element was moved in the last pass
+	unsigned sorted = 0;        // The number of already sorted elements
+	do {
+		changed = false;        // At the beginning there are no moved elements
+		// Then we check all pairs of adjoining elements
+		for (unsigned i = size - 1; i > sorted; --i) {
+			if (array[i] < array[i - 1]) {    // and if there is a pair with not proper order
+				swap(array, i, i - 1);        // swap the elements
+				changed = true;             // and mark the move
+			}
+		}
+		++sorted;                           // update the size of already sorted part
+	} while (changed);
+}
+int main()
+{
+	int array[MAX_SIZE];
+	unsigned n = readSize();
+
+	//readArray(array, n);
+	generateArray(array, n,MAX_SIZE);
+	printArray(array, n);
+	cout << endl;
+	bubbleSort(array, n);
+	printArray(array, n);
+
+	return 0;
+}
