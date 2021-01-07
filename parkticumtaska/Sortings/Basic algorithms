@@ -14,7 +14,7 @@ int f(int arr[], size_t size) {
 		return arr[i];
 	}
 }
-//add new element
+//add new element by moving others
 bool insert(int arr[], unsigned position, int x, unsigned n) {
 	if (position > n) {
 		return false;
@@ -24,6 +24,17 @@ bool insert(int arr[], unsigned position, int x, unsigned n) {
 			arr[position] = x;
 			return true;
 		}
+	}
+}//add new element directly
+bool insert(int arr[], unsigned position, int x, unsigned n) {
+	if (position > n) {
+		return false;
+	}
+	else {
+		arr[n] = arr[position];
+		arr[position] = x;
+			return true;
+		
 	}
 }
 int main()
