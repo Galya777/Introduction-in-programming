@@ -1,1 +1,54 @@
-
+#include <iostream>
+#include <time.h>
+using namespace std;
+const int MAX = 9;
+const int SUM_OF_ONE_TO_NINE = 45;
+void generateArr(int arr[][MAX],unsigned size, int max) {
+	static bool inited;
+	if (!inited) {
+		inited = true;
+		srand(time(0));
+	}for (unsigned i = 0; i < size; ++i) {
+		for (unsigned j = 0; j < size; ++j) {
+			arr[i][j] = rand() % max+1 * (rand() % 2 ? 1 : 1);
+		}
+	}
+}
+void printArr(int arr[][MAX], unsigned size) {
+	for (unsigned i = 0; i < size; ++i) {
+		for (unsigned j = 0; j < size; ++j) {
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+bool isItSudoku(int arr[][MAX], unsigned size) {
+	int row = 0;
+	do {
+		int rowSum = 0;
+		int colSum = 0;
+		for (unsigned i = 0; i < size; ++i) {
+			rowSum += arr[i][row];
+			colSum += arr[row][i];
+			if (rowSum == SUM_OF_ONE_TO_NINE && colSum == SUM_OF_ONE_TO_NINE) {
+				return true;
+				break;
+			}
+		}
+		++row;
+	} while (row < size);
+	return false;
+}
+int main()
+{
+	int arr[MAX][MAX];
+	generateArr(arr, 9, 9);
+	printArr(arr, 9);
+	if (isItSudoku(arr,9) == true) {
+		cout << "YES! It is Sudoku!";
+	}else {
+		cout << "NO! Try again!";
+	}
+	
+	return 0;
+}
