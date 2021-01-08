@@ -1,0 +1,73 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+const int MAX = 1000;
+void swap(int arr[], unsigned i, unsigned j)
+{
+	if (i != j) {
+		int t = arr[i];
+		arr[i] = arr[j];
+		arr[j] = t;
+	}
+}
+unsigned readSize()
+{
+	unsigned n;
+	do {
+		cout << "N = ";
+		cin >> n;
+	} while (n == 0 || n > MAX);
+	return n;
+}
+void generateArr(float arr[],unsigned size, int max) {
+	static bool inited;
+	if (!inited) {
+		inited = true;
+		srand(time(0));
+	}for (unsigned i = 0; i < size; ++i) {
+			arr[i] = rand() % max * (rand() / 2 ? 1 : 1);
+		}
+}
+void printArr(float arr[], unsigned size) {
+	for (unsigned i = 0; i < size; ++i) {
+		cout << arr[i] << " ";
+	}
+		cout << endl;
+}
+void sort(float array[], unsigned size) {
+	bool changed = false;
+	unsigned sorted = 0;
+	do {
+		changed = false;
+		for (unsigned i = size - 1; i > sorted; --i) {
+			if (array[i] < array[i - 1]) {
+				swap(array[i], array[i - 1]);
+				changed = true;
+			}
+		}
+		++sorted;
+	} while (changed);
+}
+int main()
+{
+	float gifts[MAX];
+	unsigned n=readSize();
+    generateArr(gifts, n, MAX);
+	printArr(gifts, n);
+	cout << endl;
+	float budget;
+	cin >> budget;
+	sort(gifts, n);
+	int index = 0;
+	for (int i = 0; i < n; ++i) {
+		budget -= gifts[i];
+		if (budget > 0) {
+			index++;
+		}
+	}
+	for (int i = 0; i < index; ++i) {
+		cout << gifts[i] << " ";
+	}
+
+	return 0;
+}
