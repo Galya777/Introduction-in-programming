@@ -1,0 +1,63 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+const int MAX = 100;
+unsigned readSize()
+{
+	unsigned n;
+	do {
+		cout << "N = ";
+		cin >> n;
+	} while (n == 0 || n > MAX);
+	return n;
+}
+void generateArr(int arr[][MAX],unsigned size, int max) {
+	static bool inited;
+	if (!inited) {
+		inited = true;
+		srand(time(0));
+	}for (unsigned i = 0; i < size; ++i) {
+		for (unsigned j = 0; j < size; ++j) {
+			arr[i][j] = rand() % 10 * (rand() % 2 ? 1 : 1);
+		}
+	}
+}
+void printArr(int arr[][MAX], unsigned size) {
+	for (unsigned i = 0; i < size; ++i) {
+		for (unsigned j = 0; j < size; ++j) {
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+int firstEquation(int arr[][MAX], int size) {
+	int counter = 0;
+	for (int i = 1; i < size-1; ++i) {
+		for (int j = 1; j < size-1; ++j) {
+			if (arr[i - 1][j] + arr[i + 1][j] + arr[i][j + 1] + arr[i][j - 1] <= arr[i][j]) {
+				counter++;
+			}
+		}
+	}
+	return counter;
+}int secondEquation(int arr[][MAX], int size) {
+	int counter = 0;
+	for (int i = 1; i < size-1; ++i) {
+		for (int j = 1; j < size-1; ++j) {
+			if (arr[i - 1][j + 1] + arr[i + 1][j] + arr[i - 1][j + 1] + arr[i - 1][j - 1] <= arr[i][j]) {
+				counter++;
+			}
+		}
+	}
+	return counter;
+}
+int main()
+{
+	int arr[MAX][MAX];
+	unsigned n=readSize();
+    generateArr(arr, n, MAX);
+	printArr(arr, n);
+	cout << "First equation elements: " << firstEquation(arr, n)<<endl;
+	cout << "Second equation elements: " << secondEquation(arr, n) << endl;
+	return 0;
+}
