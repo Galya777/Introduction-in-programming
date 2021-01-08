@@ -1,0 +1,62 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+const int MAX = 100;
+unsigned readSize()
+{
+	unsigned n;
+	do {
+		cout << "N = ";
+		cin >> n;
+	} while (n == 0 || n > MAX);
+	return n;
+}
+void generateArr(int arr[][MAX],unsigned size,unsigned size1, int max) {
+	static bool inited;
+	if (!inited) {
+		inited = true;
+		srand(time(0));
+	}for (unsigned i = 0; i < size; ++i) {
+		for (unsigned j = 0; j < size1; ++j) {
+			arr[i][j] = rand() % 10 * (rand() % 2 ? 1 : -1);
+		}
+	}
+}
+void printArr(int arr[][MAX], unsigned size,unsigned size1) {
+	for (unsigned i = 0; i < size; ++i) {
+		for (unsigned j = 0; j < size1; ++j) {
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+void multilpication(int arr1[][MAX],int arr2[][MAX],unsigned size1,unsigned size2,unsigned size3) {
+	int multiarr[MAX][MAX];
+	for (int i = 0; i < size2; ++i) {
+		for (int j = 0; j < size2; ++j) {
+			multiarr[i][j] = arr1[i][j] * arr2[j][i] + arr1[i][j+1] * arr2[j+1][i];
+		}
+	}
+	for (int i = 0; i < size1; ++i) {
+		for (int j = 0; j < size3; ++j) {
+			cout << multiarr[i][j]<<" ";
+		}
+		cout << endl;
+	}
+}
+int main()
+{
+	int arr1[MAX][MAX];
+	int arr2[MAX][MAX];
+	unsigned n=readSize();
+	unsigned n1 = readSize();
+	unsigned n2 = readSize();
+    generateArr(arr1, n,n1, MAX);
+	printArr(arr1, n, n1);
+	cout << endl;
+	generateArr(arr2, n1,n2, MAX);
+	printArr(arr2, n1, n2);
+	cout << endl;
+	multilpication(arr1, arr2, n, n1, n2);
+	return 0;
+}
