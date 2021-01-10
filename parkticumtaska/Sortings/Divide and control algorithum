@@ -1,0 +1,17 @@
+int find(int a[],size_t size, int x){
+int l,r;
+l=0; 
+r=size;
+while(l<r){
+int mid=(l+r)/2;
+if(a[mid]==x){
+return mid;
+}
+else if(a[mid]<x){
+l=mid+1;
+}else{
+r=mid;
+}
+}
+return -1;
+}
