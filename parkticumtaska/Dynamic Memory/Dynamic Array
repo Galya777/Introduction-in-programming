@@ -1,1 +1,23 @@
-
+#include <iostream>
+using namespace std;
+int* allocate(int size) {
+	return new (nothrow) int[size];
+}
+int main()
+{
+	int number;
+	cin >> number;
+	int* arr = allocate(number);
+	if (!arr) {
+		cout << "Not enough memory!" << endl;
+		return 1;
+	}
+	for (int i = 0; i < number; ++i) {
+		cin >> arr[i];
+	}
+	for (int i = 0; i < number; ++i) {
+		cout << arr[i];
+	}
+	delete[] arr;
+	return 0;
+}
