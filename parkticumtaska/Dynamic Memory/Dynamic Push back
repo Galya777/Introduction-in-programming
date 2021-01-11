@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+bool pushBack(int*& arr,int &size, int &capacity, int elem ) {
+	if (size + 1 > capacity) {
+		int* newArr = new (nothrow) int[capacity * 2];
+		if (!newArr) {
+			return false;
+		}
+		capacity *= 2;
+		for(int i = 0; i < size; ++i) {
+			newArr[i] = arr[i];
+		}
+		newArr[size] = elem;
+		size++;
+		delete[] arr;
+		arr = newArr;
+	}else {
+		arr[size++] = elem;
+	}
+	return true;
+}
+int main()
+{
+    int numOfElements, capacityOfTheArray;
+
+    std::cout << "Enter the number of elements in the array: ";
+    std::cin >> numOfElements;
+
+    capacityOfTheArray = numOfElements;
+
+    int* pArr = new (std::nothrow) int[capacityOfTheArray];
+
+    if (!pArr) { 
+       cout << "Not enough memory!" << std::endl;
+        return 1;
+    }
+
+    std::cout << "Enter " << numOfElements << " numbers:" << std::endl;
+    for (int i = 0; i < numOfElements; i++)
+        cin >> pArr[i];
+
+    int elem;
+    cout << "Enter a number to add to the back of the array: ";
+    cin >> elem;
+
+    if (pushBack(pArr, numOfElements, capacityOfTheArray, elem))
+        cout << "The element was added." << endl;
+    else
+        cout << "The element could not be added! Not enough memory?" << endl;
+
+    for (int i = 0; i < numOfElements; i++)
+        cout << pArr[i] << ' ';
+
+    delete[] pArr;
+
+
+	return 0;
+}
