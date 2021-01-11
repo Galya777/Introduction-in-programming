@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+const int* find(int* arr, int size, int searchingFor) {
+	const int* first = arr;
+	const int* last = &arr[size - 1];
+	const int* middle;
+	while (first <= last) {
+		middle = first + (last - first) / 2;
+		if (*middle == searchingFor) {
+			return middle;
+		}else if(*middle<searchingFor) {
+			first = middle + 1;
+		}else {
+			last = middle - 1;
+		}
+	}
+	return nullptr;
+}
+int main()
+{
+   
+    int numOfElements;
+    cout << "Enter the number of elements in the array: ";
+    cin >> numOfElements;
+
+    int* pArr = new (nothrow) int[numOfElements];
+
+    if (!pArr) { 
+        cout << "Not enough memory!" << endl;
+        return 1;
+    }
+    cout << "Enter " << numOfElements << " SORTED numbers:" << endl;
+    for (int i = 0; i < numOfElements; i++)
+        cin >> pArr[i];
+
+    int elem;
+    cout << "Enter a number to search in the SORTED array: ";
+    cin >> elem;
+
+    const int* pResult = find(pArr, numOfElements, elem);
+    if (pResult) {
+        cout << *pResult << " has been found in the array." << endl;
+        cout << "It's at index " << pResult - pArr << endl;
+    }
+    else {
+        cout << elem << " was not found in the array." << endl;
+    }
+
+    delete[] pArr;
+
+
+	return 0;
+}
