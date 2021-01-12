@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+char*reverse_words(char*text) {
+	int words = strlen(text);
+	char* rev = new char[words + 1];
+	int i = 0, j = 0;
+	while (i < words) {
+		int k = i;
+		if (text[i + 1] == ' ' || text[i + 1] == '\0') {
+			while (j <= i) {
+				rev[j] = text[k];
+				j++;
+				k--;
+			}rev[j] = text[i + 1];
+			j++;
+			i++;
+		}
+		++i;
+	}
+
+	return rev;
+}
+int main()
+{
+	char sentence[100]{ "Turn that frown upside down :(" };
+	std::cout << reverse_words(sentence);
+	delete[] reverse_words(sentence);
+	return 0;
+}
