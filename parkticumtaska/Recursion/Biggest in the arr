@@ -1,0 +1,21 @@
+ #include <iostream>
+using namespace std;
+inline int maxOfTwo(int num1, int num2)
+{
+	return (num1 > num2) ? num1 : num2;
+}
+
+int biggersInArray(int arr[], int size) {
+	if (size == 1) return *arr;
+	int nextMax = biggersInArray(arr + 1, size - 1);
+	return maxOfTwo(*arr, nextMax);
+}
+int main()
+{
+	int arr[10];
+	for (int i = 0; i < 10; ++i) {
+		cin >> arr[i];
+	}
+	cout << biggersInArray(arr, 10);
+	return 0;
+}
