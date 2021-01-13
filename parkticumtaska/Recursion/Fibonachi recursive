@@ -1,0 +1,15 @@
+ #include <iostream>
+#include <cstring>
+using namespace std;
+int fibbonachi(int n) {
+	if (n == 0) return 0;
+	if (n == 1) return 1;
+	else return fibbonachi(n - 1) + fibbonachi(n - 2);
+}
+int main()
+{
+	int number;
+	cin >> number;
+	cout << fibbonachi(number);
+	return 0;
+}
