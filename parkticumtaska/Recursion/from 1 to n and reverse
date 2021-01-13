@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+int smaller(int n) {
+	if (n <= 0) return 0;
+	cout << n << ' ';
+	smaller(n - 1);
+}
+int bigger(int n) {
+	if (n <=0) return 0;
+	bigger(n - 1);
+	cout << n << ' ';
+}
+int main()
+{
+	int number;
+	cin >> number;
+	smaller(number);
+	 cout<<endl;
+ bigger(number);
+	return 0;
+}
