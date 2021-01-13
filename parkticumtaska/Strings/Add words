@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+char* words(char* word1, char* word2,int size) {
+	int size1 = strlen(word1) - 1;
+	char* word = new (nothrow) char[size];
+	if (!word) {
+		return nullptr;
+	}
+	for (int i = 0; i < size1; ++i) {
+		word[i] = word1[i];
+	}
+	word[size1] = ' ';
+	for (int i = size1 + 1; i < size; ++i) {
+		word[i] = word2[i];
+	}
+	return word;
+}
+int main()
+{
+	char word1[10] = { "something" };
+	char word2[10] = { " else" };
+	int size = strlen(word1) + strlen(word2);
+	cout << words(word1, word2,size);
+	return 0;
+}
