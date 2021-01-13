@@ -1,7 +1,8 @@
-#include <iostream>
+ #include <iostream>
 using namespace std;
-char* words(char* word1, char* word2,int size) {
-	int size1 = strlen(word1) - 1;
+char* words(char* word1, char* word2, int size) {
+	size_t size1 = strlen(word1);
+	size_t size2 = strlen(word2);
 	char* word = new (nothrow) char[size];
 	if (!word) {
 		return nullptr;
@@ -10,16 +11,19 @@ char* words(char* word1, char* word2,int size) {
 		word[i] = word1[i];
 	}
 	word[size1] = ' ';
-	for (int i = size1 + 1; i < size; ++i) {
-		word[i] = word2[i];
-	}
+	int j = size1 + 1; 
+		for (int i = 0; i < size2; ++i) {
+			word[j] = word2[i];
+			++j;
+		}
+		word[j] = '/0';
 	return word;
 }
 int main()
 {
 	char word1[10] = { "something" };
-	char word2[10] = { " else" };
+	char word2[10] = { "else" };
 	int size = strlen(word1) + strlen(word2);
-	cout << words(word1, word2,size);
+	cout << words(word1, word2, size);
 	return 0;
 }
