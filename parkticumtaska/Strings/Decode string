@@ -1,0 +1,38 @@
+ #include <iostream>
+#include <cstring>
+using namespace std;
+void run_length_decode(char* buffer, const char* word) {
+	unsigned times = 0;
+	int bufferI = 0;
+	for (int i = 0; word[i] != '\0'; ++i)
+	{
+		times = 0;
+		while (word[i] >= '0' && word[i] <= '9')
+		{
+			times = times * 10 + (word[i] - '0');
+			++i;
+		}
+
+		if (times == 0)
+		{
+			buffer[bufferI] = word[i];
+			++bufferI;
+		}
+		else
+		{
+			for (unsigned j = 0; j < times; ++j)
+			{
+				buffer[bufferI] = word[i];
+				++bufferI;
+			}
+		}
+	}
+	buffer[bufferI] = '\0';
+}
+int main()
+{
+	char buffer[100]{};
+	 run_length_decode(buffer, "a2b10c");
+	 cout << buffer;
+	return 0;
+}
