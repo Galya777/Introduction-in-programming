@@ -1,0 +1,14 @@
+ #include <iostream>
+using namespace std;
+int DigitSum(int number) {
+    if (number / 10 == 0) return number;
+    return number%10+DigitSum(number / 10);
+}
+
+int main()
+{
+    int number;
+    cin >> number;
+    cout << DigitSum(number);
+    return 0;
+}
