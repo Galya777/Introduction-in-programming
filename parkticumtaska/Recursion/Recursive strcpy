@@ -1,0 +1,30 @@
+ #include <iostream>
+using namespace std;
+
+void strCpyRec(char* dst, const char* src)
+{
+    if (*src == '\0')
+    {
+        *dst = *src;
+        return;
+    }
+    *dst = *src;
+    strCpyRec(dst + 1, src + 1);
+}
+
+
+int main()
+{
+    const int MAX_SIZE = 128;
+
+    char* string = new (std::nothrow) char[MAX_SIZE];
+    if (!string)
+        return 1;
+
+    strCpyRec(string, "This is a sample text.");
+    std::cout << string;
+
+    delete[] string;
+
+    return 0;
+}
