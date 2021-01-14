@@ -1,0 +1,13 @@
+ #include <iostream>
+using namespace std;
+int strlenRec(const char* arr) {
+	if (*arr=='\0') return 0;
+
+	return 1+strlenRec(arr+1);
+}
+int main()
+{
+	
+	cout << strlenRec("love");
+	return 0;
+}
