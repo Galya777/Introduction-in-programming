@@ -1,0 +1,50 @@
+#include<iostream>
+#include <iomanip>
+using namespace std;
+const int SIZE = 10;
+static int g_endX, g_endY;
+static int lab[SIZE][SIZE] =
+{
+    {0, 1, 0, 0, 0, 1, 1, 0, 0, 0},
+    {0, 1, 0, 1, 1, 0, 0, 0, 0, 0},
+    {0, 1, 1, 1, 1, 0, 1, 0, 1, 0},
+    {0, 0, 0, 0, 0, 0, 1, 1, 0, 0},
+    {0, 1, 1, 1, 1, 0, 1, 1, 1, 1},
+    {1, 0, 1, 1, 0, 0, 1, 0, 0, 0},
+    {0, 0, 1, 0, 1, 1, 0, 1, 0, 0},
+    {0, 0, 0, 0, 0, 1, 0, 0, 1, 0},
+    {0, 0, 0, 0, 0, 0, 1, 1, 0, 0},
+    {0, 0, 0, 0, 0, 1, 0, 0, 0, 0}
+};
+int hasPathRec(int x, int y, int len, int path) {
+    static const int dx[] = { 0,  1,  0, -1 };
+    static const int dy[] = { 1,  0, -1,  0 };
+    static const int numMoves = sizeof(dx) / sizeof(dx[0]);
+    if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) { 
+        return -1;
+    }
+    if (lab[x][y] != 0) {                           
+        return -1;
+    }
+    lab[x][y] = -len;
+    path[&len-1] = x * SIZE + y;
+    if (x == g_endX && y == g_endY) {
+        return len;
+    }
+    int pathLen = -1;
+    for (int direction = 0; pathLen < 0 && direction < numMoves; ++direction) {
+        pathLen = hasPathRec(x + dx[direction], y + dy[direction], len + 1, path);
+    }
+    return pathLen;
+}
+int main()
+{
+    cout << boolalpha << hasPathRec(0, 0, 0, 9) << endl;
+    for (int i = 0; i < SIZE; ++i) {
+        for (int j = 0; j < SIZE; ++j) {
+            cout << setw(4) << lab[i][j];
+        }
+        cout << endl;
+    }
+    return 0;
+}
