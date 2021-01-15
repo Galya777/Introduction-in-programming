@@ -1,0 +1,34 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+int interestingRowBig(int n) {
+    if (n==1) return 0;
+    interestingRowBig(n - 1);
+    cout << n<<1;
+}
+int interestingRowSmall(int n) {
+    if (n == 1) return 0;
+    cout << n<<1;
+    interestingRowSmall(n - 1);
+    
+}
+int main()
+{
+    int n;
+    cin >> n;
+    while (n > 20) {
+        cout << "The number must be under 20!" << endl;
+        cin >> n;
+    }  cout << 1;
+    if (n == 1) {
+        cout << endl;
+    } else if (n > 2) {
+        interestingRowBig(n - 1);
+        interestingRowSmall(n - 2);
+    }else {
+        interestingRowBig(n);
+        interestingRowSmall(n - 1);
+    }
+    cout<< endl;
+    return 0;
+}
