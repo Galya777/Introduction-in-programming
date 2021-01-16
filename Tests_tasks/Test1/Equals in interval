@@ -14,7 +14,7 @@ int main()
 {
     int n;
     float num;
-    int row[MAX_SIZE];
+    float row[MAX_SIZE];
     bool solution = false;
     int solutionNumber = 0;
     int diff = 0;
