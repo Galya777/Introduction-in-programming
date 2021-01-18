@@ -179,7 +179,7 @@ int main()
 				valid++;
 			}
 			else {
-				invalid++;
+				++invalid;
 			}
 		}
 		cout << valid << " " << invalid;
