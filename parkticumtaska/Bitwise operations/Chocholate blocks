@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+int maxElem(int a, int b) {
+	if (a > b) {
+		return a;
+	}
+	return b;
+}int minElem(int a, int b) {
+	if (a < b) {
+		return a;
+	}
+	return b;
+}
+int main()
+{
+	int n, m, k;
+	cin >> n >> m >> k;
+	if ((maxElem(m,k) >> minElem(m,k) == 0 || maxElem(n,k) >> minElem(n,k) == 0)) {
+		cout << "YES!";
+	}else {
+		cout << "NO!";
+	}
+	return 0;
+}
