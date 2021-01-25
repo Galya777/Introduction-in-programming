@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int number, k, l, m,n;
+	cin >> number >> k >> l >> m>>n;
+	unsigned int mask1 = 1 << k;
+	unsigned int mask2 = 1 << l;
+	unsigned int mask3 = 1 << m;
+	unsigned int mask4 = 1 << n;
+	bool bitk = number&mask1;
+	bool bitl =  number&mask2;
+	bool bitm = number&mask3; 
+	bool bitn =  number&mask4;
+	cout << bitk << bitl << bitm << bitn<<endl;
+	if (bitk==1||bitl==1||bitm==1||bitn==1) {
+		int multiplication = 1;
+		if (bitk == 1) {
+			multiplication *= k;
+		} 
+		if (bitl == 1) {
+			multiplication *= l;
+		}
+		if (bitm == 1) {
+			multiplication *= m;
+		}
+		if (bitn == 1) {
+			multiplication *= n;
+		}
+		cout << multiplication;
+	}else {
+		cout << (l + m + k+n) % 3;
+	}
+	return 0;
+}
