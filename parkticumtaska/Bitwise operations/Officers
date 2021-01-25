@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int n1, n2, m1, m2;
+	cin >> n1 >> m1 >> n2 >> m2;
+	int CYlength = abs(n2 - n1);
+	int CXlength = abs(m2 - m1);
+
+	if (CYlength == CXlength)
+	{
+		std::cout << "YES" << std::endl;
+	}
+	else
+	{
+		std::cout << "NO" << std::endl;
+	}
+
+	return 0;
+}
