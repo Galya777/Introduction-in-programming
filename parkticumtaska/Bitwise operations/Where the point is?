@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int pointX, pointY;
+	cin >> pointX >> pointY;
+	const short SIZE_OF_UNS_INT = sizeof(unsigned int) * 8;
+	unsigned int mask = 1 << (SIZE_OF_UNS_INT - 1);
+	int bitOfX = pointX & mask;
+	int bitOfY = pointY & mask;
+	if (pointX == 0) {
+		cout << "X axis" << endl;
+	}else if (pointY == 0) {
+		cout << "Y axis" << endl;
+	}else {
+		if (bitOfX == bitOfY) {
+			if (bitOfX == 1) {
+				cout << "Third Quadrant" << endl;
+			}	else {
+				cout << "First Quadrant" << endl;
+			}
+		}else {
+			if (bitOfX == 1) {
+				cout << "Second Quadrant" << endl;
+			}
+			else {
+				cout << "Fourth Quadrant" << endl;
+			}
+		}
+	}
+	return 0;
+}
