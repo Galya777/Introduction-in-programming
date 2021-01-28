@@ -1,0 +1,100 @@
+#include <iostream>
+using namespace std;
+size_t sunofDigits(int N) {
+	if (N == 0) {
+		return 0;
+	}
+	int digit = N % 10;
+	return digit + sunofDigits(N / 10);
+}
+int maxDigitSum(int* arr,int size) {
+	int sum = sunofDigits(arr[0]);
+	for (int i = 1; i < size; ++i) {
+		if (sunofDigits(arr[i]) > sum) {
+			sum = sunofDigits(arr[i]);
+		}
+	}
+	return sum;
+}void cleanMatrix(int** matrix, int rows)
+{
+	for (int i = 0; i < rows; i++)
+		delete[] matrix[i];
+	delete[] matrix;
+}
+void printJaggedMatrix(const int* const* matrix, int rows, const size_t* rowsElements)
+{
+	for (int i = 0; i < rows; i++) {
+		std::cout << i << ": ";
+		for (size_t j = 0; j < rowsElements[i]; j++)
+			std::cout << ' ' << matrix[i][j];
+		std::cout << '\n';
+	}
+}
+int main()
+{
+	int N;
+	cin >> N;
+	int* arr = new (nothrow) int[N];
+	if (!arr) {
+		cout << "Not enough memory!" << endl;
+		return -1;
+	}
+	for (int i = 0; i < N; ++i) {
+		cin >> arr[i];
+	}
+	int S=maxDigitSum(arr,N);
+	size_t* matrix = new (nothrow) size_t [S+1];
+	if (!matrix) {
+		delete[] arr;
+		std::cerr << "Not enough memory!\n";
+		return 2;
+	}
+
+    for (int i = 0; i < S + 1; i++)
+        matrix[i] = 0;
+
+    for (int i = 0; i < N; i++)
+        ++matrix[sunofDigits(arr[i])];
+
+    int** matrix1 = new (std::nothrow) int* [S + 1];
+    if (!matrix1) {
+        delete[] arr;
+        delete[] matrix;
+        std::cerr << "Not enough memory!\n";
+        return 2;
+    }
+    for (size_t i = 0; i < S + 1; i++) {
+
+        if (matrix[i] > 0) {
+            matrix1[i] = new (std::nothrow) int[matrix[i]];
+
+            if (!matrix1[i]) {
+                cleanMatrix(matrix1, i);
+                delete[] arr;
+                delete[] matrix;
+                std::cerr << "Not enough memory!\n";
+                return 2;
+            }
+
+        }
+        else {
+            matrix1[i] = nullptr;
+        }
+
+    }
+
+    for (size_t i = 0; i < S + 1; i++) {
+        int count = 0;
+        for (int j = 0; j < N; j++)
+            if (sunofDigits(arr[j]) == i)
+                matrix1[i][count++] = arr[j];
+    }
+
+    printJaggedMatrix(matrix1, S + 1, matrix);
+
+    delete[] arr;
+    delete[] matrix;
+    cleanMatrix(matrix1, S + 1);
+
+	return 0;
+}
