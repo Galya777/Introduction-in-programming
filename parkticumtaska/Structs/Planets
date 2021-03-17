@@ -1,0 +1,69 @@
+#include <iostream>
+#include <cstring>
+#include <cmath>
+using namespace std;
+const int MAX = 100;
+const int LIGHT = 299792;
+struct Planet {
+	char name[MAX];
+	int awayFromSun;
+	int diameter;
+	int weigh;
+	void add() {
+		for (int i = 0; i < MAX; ++i) {
+			cin >> name[i];
+		}cin >> awayFromSun;
+		cin >> diameter;
+		cin >> weigh;
+	}
+	void print() {
+		for (int i = 0; i < strlen(name); ++i) {
+			cout << name[i];
+		}
+		cout << " " << awayFromSun << " " << diameter << " " << weigh<<endl;
+	}
+	int seconds() {
+		double sec=awayFromSun/LIGHT;
+		return sec;
+	}
+};
+int main()
+{
+	Planet planets[MAX];
+	for (int i = 0; i < MAX; ++i) {
+		planets[i].add();
+	}
+	for (int i = 0; i < MAX; ++i) {
+		planets[i].print();
+	}
+	Planet biggest = planets[0];
+	for (int i = 1; i < MAX; ++i) {
+		if (planets[i].diameter > biggest.diameter) {
+			biggest = planets[i];
+		}
+	}	biggest.print();
+	Planet weakest = planets[0];
+	for (int i = 1; i < MAX; ++i) {
+		if (planets[i].weigh < weakest.weigh) {
+			weakest = planets[i];
+		}
+	}	weakest.print();
+	Planet darkest = planets[0];
+	for (int i = 1; i < MAX; ++i) {
+		if (planets[i].seconds() >darkest.seconds() ) {
+			darkest = planets[i];
+		}
+
+	}
+	darkest.print();
+	Planet brighter = planets[0];
+	for (int i = 1; i < MAX; ++i) {
+		if (planets[i].seconds() > brighter.seconds()) {
+			brighter = planets[i];
+		}
+
+	}
+	brighter.print();
+
+	return 0;
+}
