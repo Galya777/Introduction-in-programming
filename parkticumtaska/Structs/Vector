@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+struct Vector {
+	double x;
+	double y;
+	double z;
+};
+Vector add(double a, double b, double c) {
+	Vector v;
+	v.x = a;
+	v.y = b;
+	v.z = c;
+	return v;
+}
+void print(Vector v) {
+	cout << v.x << " " << v.y << " " << v.z;
+}
+double vectrorLenght(Vector v) {
+	double lenght = 0;
+	lenght = sqrt(v.x*v.x+v.y*v.y+v.z*v.z);
+	return lenght;
+}
+Vector Total(Vector a, Vector b) {
+	Vector total;
+	total.x = a.x + b.x;
+	total.y = a.y + b.y;
+	total.z = a.z + b.z;
+	return total;
+}
+Vector Substract(Vector a, Vector b) {
+	Vector sub;
+	sub.x = a.x - b.x;
+	sub.y = a.y - b.y;
+	sub.z = a.z - b.z;
+	return sub;
+}
+Vector Scalar(Vector v, int number) {
+	v.x *= number;
+	v.y *= number;
+	v.z *= number;
+	return v;
+}
+int main()
+{
+	int a = 7, b = 10, c = 8;
+	Vector vec=add(a, b, c);
+
+	return 0;
+}
