@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+struct Rectangle {
+	double a;
+	double b;
+	void create() {
+		cin >> a;
+		cin >> b;
+	}
+	void print() {
+		cout << a << " " << b;
+	}
+};
+double perimeter(Rectangle r) {
+	double p = 2 * r.a + 2 * r.b;
+	return p;
+}
+double surface(Rectangle r) {
+	double s = r.a * r.b;
+	return s;
+}
+double radius(Rectangle r) {
+	double diagonal = sqrt(r.a * r.a + r.b * r.b);
+	return diagonal / 2;
+}
+int main()
+{
+	Rectangle ract;
+	ract.create();
+	cout << endl;
+	ract.print();
+	cout << endl;
+	cout<<perimeter(ract)<<" "<<surface(ract)<<" "<<radius(ract);
+	return 0;
+}
