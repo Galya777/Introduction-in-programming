@@ -1,0 +1,17 @@
+void alphabethOrder(char** arr) {
+    char temp[50];
+    for (int i = 0; i < strlen(*arr)-1; ++i) {
+        for (int j = 0; j < strlen(arr[i])-1; ++j) {
+            if (strcmp(arr[i], arr[j]) > 0) {
+                strcpy(temp, arr[i]);
+                strcpy(arr[i], arr[j]);
+                strcpy(arr[j], temp);
+            }
+        }
+    }
+
+    for (int i = 0; i < strlen(temp) - 1; ++i) {
+        cout << temp[i]<<endl;
+    }
+
+}
