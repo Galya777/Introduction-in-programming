@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+int sumofDerivatives(int n, int x, int sum=0) {
+    if (n < 2) {
+        return sum;
+    }
+    if (x % n == 0) {
+        ++sum;
+    }
+    return sumofDerivatives(n - 1, x,sum);
+}
+int main()
+{
+    cout << sumofDerivatives(125, 5320);
+    return 0;
+}
