@@ -1,0 +1,60 @@
+#include<iostream>
+using namespace std;
+bool isTheLetterHere(char table[][100], char* word, int N, int M) {
+    for (int i = 0; i < N; ++i) {
+        if (strstr(table[i], word)) {
+            return true;
+        }
+    }  for (int j = 0; j < M; ++j) {
+            if (strstr(table[j], word)) {
+                return true;
+            }
+        }
+    for (int i = N; i > 0; --i) {
+        if (strstr(table[i], word)) {
+            return true;
+        }
+    }  for (int j = M; j >0; --j) {
+        if (strstr(table[j], word)) {
+            return true;
+        }
+    }
+    char current[100];
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < M; ++j) {
+            if (i == j) {
+                *current = table[i][j];
+            }
+        }
+    }
+    if (strstr(current, word)) {
+        return true;
+    }
+
+    return false;
+}
+int main()
+{
+    int N, M, T;
+    char words[100][100];
+    char table[100][100];
+    cin >> N >> M;
+    cin >> T;
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < M; ++j) {
+            cin >> table[i][j];
+        }
+    }
+    for (int k = 0; k < T; ++k) {
+            cin >> words[k];
+        
+    }
+    for (int k = 0; k < T; ++k) {
+        if (isTheLetterHere(table, words[k], N, M) == true) {
+            cout << words[k] << " "<<"YES!"<<endl;
+        }    else {
+            cout << words[k] << " " << "NO!"<<endl;
+        }
+    }
+    return 0;
+}
