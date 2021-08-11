@@ -1,0 +1,17 @@
+#include<iostream>
+using namespace std;
+int period(int arr[], int per = 0, int i=0) {
+    if (i == sizeof(arr) - 1) {
+        return per;
+    }
+    if (arr[i] == *arr) {
+        ++per;
+    }
+    return period(arr, per, i + 1);
+}
+int main()
+{
+    int arr[10] = { 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, };
+    cout << period(arr);
+    return 0;
+}
