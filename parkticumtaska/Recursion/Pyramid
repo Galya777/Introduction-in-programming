@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+void reursivePiramide(int n, int counter) {
+    if (n == counter) {
+        cout << n << endl;
+        return;
+    } 
+    cout << n<<" ";
+    reursivePiramide(n - 1, counter);
+}
+void printPyramid(int n, int outs = 10) {
+    if (outs <0) {
+        return;
+    }
+    reursivePiramide(n, outs);
+    cout << endl;
+    --outs;
+    printPyramid(n, outs);
+}
+int main()
+{
+    printPyramid(10);
+    return 0;
+}
