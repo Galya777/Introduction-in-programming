@@ -1,0 +1,53 @@
+#include<iostream>
+using namespace std;
+void swap(int arr[], unsigned i, unsigned j)
+{
+	if (i != j) {
+		int t = arr[i];
+		arr[i] = arr[j];
+		arr[j] = t;
+	}
+}unsigned minFrom(int array[], unsigned from, unsigned to)
+{
+	unsigned min = from;
+	for (unsigned i = from + 1; i < to; ++i) {
+		if (array[i] < array[min])
+			min = i;
+	}
+	return min;
+}
+void printArray(int array[], unsigned size)
+{
+	for (unsigned i = 0; i < size; ++i) {
+		cout << array[i] << " ";
+	}
+	cout << endl;
+}
+void selectionSort(int arr[], unsigned size) {
+	for (unsigned i = 0; i < size - 1; ++i) {
+		int m = minFrom(arr, i, size);
+		swap(arr, m, i);
+	}
+}
+int main()
+{
+    int n;
+    int arr[500];
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+	selectionSort(arr, n);
+	int start = arr[0];
+	int found[500];
+	int index = 0;
+	for (int i = 1; i < n; ++i) {
+		if (arr[i] != start) {
+			start = arr[i];
+			found[index] = i + 1;
+			++index;
+		}
+	}
+	cout << minFrom(found, 0, index - 1);
+
+    return 0;
+}
