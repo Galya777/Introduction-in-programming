@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+void compressString(const char* text) {
+    int j = 0;
+    for (int i = 0; i < strlen(text) - 1; i++) {
+        int count = 1;
+        while (i < strlen(text) - 1 && text[i] == text[i + 1]) {
+            count++;
+            i++;
+        }
+        if (count == 1) {
+            cout << text[i];
+        }
+        else {
+            cout << count<<text[i];
+        }
+    }
+} 
+void decompressSteing(const char* text) {
+    int st = 0;
+    for (int j = 0; j < strlen(text);) {
+        int x = 0;
+
+        while (j < strlen(text) && isdigit(text[j])) {
+            x = (x * 10) + (text[j] - '0');
+            j++;
+        }
+
+        x--;
+        while (x >= 0) {
+          cout<< text[st];
+            x--;
+        }
+
+        if (j < strlen(text))
+            cout<< text[j];
+        st = j+2;
+        j++;
+    }
+}
+void printStrings(const char text, int x) {
+    if (x == 0) {
+        return;
+    }
+    cout << text;
+    printStrings(text, x - 1);
+}
+void decompressRecursive(const char* text, int i=0) {
+    if (i==strlen(text)) {
+        return;
+    } int x = 0;
+    if (isdigit(text[i])) {
+        x = (x * 10) + (text[i] - '0');
+        printStrings(text[i+1], x);
+    }   else {
+        printStrings(text[i], 1);
+    }
+    decompressRecursive(text, ++i);
+}
+int main()
+{
+    compressString("abcdddddaaaaaaabccadddd");
+    cout << endl;
+    decompressSteing("abc5d7abcca4d");
+    cout << endl;
+    decompressRecursive("abc5d7abcca4d");
+    cout << endl;
+    return 0;
+}
