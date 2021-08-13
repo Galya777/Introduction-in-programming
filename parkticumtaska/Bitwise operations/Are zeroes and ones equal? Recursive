@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+int numberOfOnes(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    return (n & 1) + numberOfOnes(n >> 1);
+}
+int onesComplement(int n)
+{
+    int N = floor(log2(n)) + 1;
+    return ((1 << N) - 1) ^ n;
+}
+int numberOfZeroes(int n, int count = 0) {
+    if (n == 0) {
+        return count;
+ }   
+    return (n & 1) + numberOfOnes(n >> 1);
+}
+bool equals(int n) {
+    int ones = numberOfOnes(n);
+    n = onesComplement(n);
+    int zeroes = numberOfZeroes(n);
+    if (ones == zeroes) {
+        return true;
+    }
+    return false;
+}
+int main()
+{
+    int n;
+    cin >> n;
+    if (equals(n) == true) {
+        cout << "YES!";
+    }
+    else {
+        cout << "NO!";
+    }
+    return 0;
+}
