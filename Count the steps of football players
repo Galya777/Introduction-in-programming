@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+	int n;
+	cin >> n;
+	float location, place;
+	double x;
+	int fx;
+	double fx1;
+	const double PI = 3.14;
+	for (int row = 1; row <= n; row++) {
+		cin >> location >> place;
+		double sum = location + place;
+		sum += sum;
+		x =abs( location - place);
+		fx = ((PI * x) / 2 + x) / 2;
+		fx1 = (((PI * fx) / 2) + fx) / 2;
+		if (((location <= -5) && (place <= -2) && (location >= 5) && (place >= 2))|| ((!location <= -5) && (!place <= -2) && (!location >= 5) && (!place >= 2))) {
+			location -= location;
+			place -= place;
+			x += location - place;
+				fx = ((PI * x) / 2 + x) / 2;
+				fx1 = (((PI * fx) / 2) + fx) / 2;
+			}
+		else if (((location <= -5) && (place <= -2) && (location >= 5) && (place >= 2)) || ((location <= -5) && (place <= -2) && (location >= 5) && (place >= 2))) {
+			fx1 = 0;
+		} 
+		else if ((!location >= 5 && !place >= 2) && (!location <= -5) && (!place <= -2)) {
+			place += place;
+			location += location;
+			x += location - place;
+			fx = ((PI * x) / 2 + x) / 2;
+			fx1 = (((PI * fx) / 2) + fx) / 2;
+		}		
+	}
+	cout <<  abs(fx1) << endl;
+
+
+
+
+
+
+
+	
+	
+	return 0;
+}
